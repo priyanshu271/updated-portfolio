@@ -23,14 +23,14 @@ export default function ContactPage() {
 
     try {
       await emailjs.send(
-        'service_k991bp7',         // Replace with your EmailJS service ID
-        'template_6qgqgfe',        // Replace with your EmailJS template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,  
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
-          from_name: formData.name,   // Match template variable names
-          from_email: formData.email, // Match template variable names
-          message: formData.message,  // Match template variable names
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
         },
-        'tMTROKh_3LFGsPiII'           // Replace with your EmailJS public key
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!     
       );
       setStatusMessage("Your message has been sent successfully!");
       setFormData({ name: '', email: '', message: '' });
