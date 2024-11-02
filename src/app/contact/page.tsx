@@ -36,6 +36,7 @@ export default function ContactPage() {
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       setStatusMessage("Failed to send your message. Please try again later.");
+      console.log(error)
     } finally {
       setIsSending(false);
     }
